@@ -692,31 +692,26 @@
    ========================================================= */
 
 .perfil-footer-bar {
-  background: #111;
-  padding: 20px 56px;
+  background: #f0ede8;
+  border-top: 1px solid #e5e3dd;
+  padding: 16px 48px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
   position: relative;
   z-index: 10;
 }
 
 .perfil-footer-bar__marca {
   font-size: 0.75rem;
-  color: #555;
-  letter-spacing: 0.05em;
+  color: #aaa;
+  letter-spacing: 0.08em;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .perfil-footer-bar__link {
-  font-size: 0.7rem;
-  color: #333;
-  font-family: monospace;
-  background: #1a1a1a;
-  padding: 5px 10px;
-  border-radius: 5px;
+  display: none;
 }
 
 /* =========================================================
