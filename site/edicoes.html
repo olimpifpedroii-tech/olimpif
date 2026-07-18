@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Edições</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="edicoes.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <!-- VISTA 1: lista de edições -->
+      <div id="vista-lista-edicoes">
+        <header class="page-header">
+          <span class="page-header__eyebrow">Histórico</span>
+          <h1>Edições</h1>
+          <p>Reveja edições anteriores das olimpíadas do IFPI: campeão geral, destaques e top medalhistas.</p>
+        </header>
+
+        <div class="grid-cards" id="lista-edicoes"></div>
+      </div>
+
+      <!-- VISTA 2: resumo da edição selecionada -->
+      <div id="vista-resumo-edicao" style="display:none;">
+        <header class="page-header">
+          <a href="#" id="link-voltar-edicoes" style="font-size:0.85rem; font-weight:700; color: var(--verde-escuro); text-decoration:none; display:inline-block; margin-bottom:10px;">← Voltar para edições</a>
+          <span class="page-header__eyebrow" id="ano-edicao">Edição</span>
+          <h1 id="titulo-edicao">Olimpíada IFPI</h1>
+          <p id="descricao-edicao"></p>
+        </header>
+
+        <section class="secao">
+          <div class="secao__titulo">
+            <h2>Pódio geral da edição</h2>
+          </div>
+          <div class="podio" id="podio-edicao"></div>
+        </section>
+
+        <section class="secao">
+          <div class="secao__titulo">
+            <h2>Destaques da edição</h2>
+          </div>
+          <div class="grid-cards" id="destaques-edicao"></div>
+        </section>
+
+        <section class="secao">
+          <div class="secao__titulo">
+            <h2>Top medalhistas</h2>
+            <a href="medalhistas.html">Ver lista completa →</a>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Modalidade</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-edicao"></tbody>
+          </table>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/edicoes.js"></script>
+</body>
+</html>

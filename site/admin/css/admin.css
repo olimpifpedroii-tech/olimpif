@@ -1,0 +1,422 @@
+/* =========================================================
+   Olimpíadas IFPI — Painel Admin
+   Reaproveita os tokens de css/style.css (cores, fontes, raio)
+   ========================================================= */
+
+/* ---------- Aside do admin ---------- */
+
+.aside__brand-mark--admin {
+  background: var(--vermelho);
+}
+
+.aside__link--sair {
+  color: var(--vermelho);
+}
+
+.aside__link--sair svg {
+  stroke: var(--vermelho);
+}
+
+.aside__link--sair:hover {
+  background: #FDECEC;
+  color: var(--vermelho);
+}
+
+/* ---------- Cabeçalho da página com ação ---------- */
+
+.page-header--admin {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.page-header--admin .botao {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.botao svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Cards do dashboard ---------- */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.dashboard-card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--verde-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.dashboard-card__icon svg {
+  width: 19px !important;
+  height: 19px !important;
+  stroke: var(--verde-escuro);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dashboard-card__valor {
+  font-family: var(--fonte-display);
+  font-weight: 800;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.dashboard-card__label {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+/* ---------- Tabela admin (com ações) ---------- */
+
+.tabela--admin th:last-child,
+.tabela--admin td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tabela__foto {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--cinza-borda);
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.tabela__nome-com-foto {
+  display: flex;
+  align-items: center;
+}
+
+.acao-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  color: var(--texto-suave);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.acao-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.acao-btn:hover {
+  background: var(--cinza-fundo);
+  color: var(--verde-escuro);
+}
+
+.acao-btn--excluir:hover {
+  background: #FDECEC;
+  color: var(--vermelho);
+}
+
+/* ---------- Estado vazio ---------- */
+
+.estado-vazio {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--texto-suave);
+}
+
+.estado-vazio svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--cinza-borda);
+  fill: none;
+  stroke-width: 1.6;
+  margin-bottom: 12px;
+}
+
+.estado-vazio p {
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.estado-vazio strong {
+  display: block;
+  font-family: var(--fonte-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 4px;
+}
+
+/* ---------- Modal de formulário ---------- */
+
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-fundo[hidden] {
+  display: none;
+}
+
+.modal {
+  background: var(--branco);
+  border-radius: var(--raio);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.modal__cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.modal__cabecalho h2 {
+  font-family: var(--fonte-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.modal__fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-suave);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.modal__fechar svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.modal__fechar:hover {
+  color: var(--vermelho);
+}
+
+.modal__corpo {
+  padding: 22px 24px;
+}
+
+.modal__rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--cinza-borda);
+}
+
+/* ---------- Formulários ---------- */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--texto-suave);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  padding: 10px 13px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 8px;
+  background: var(--cinza-fundo);
+  color: var(--texto);
+}
+
+.campo select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235C6A64' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: var(--fonte-corpo);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: 2px solid var(--verde);
+  outline-offset: 1px;
+}
+
+.campo--linha {
+  display: flex;
+  gap: 12px;
+}
+
+.campo--linha .campo {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.campo__ajuda {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* Upload de foto */
+
+.upload-foto {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.upload-foto__preview {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--cinza-fundo);
+  border: 1px solid var(--cinza-borda);
+  flex-shrink: 0;
+}
+
+.upload-foto__botao {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--verde-escuro);
+  background: var(--verde-claro);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.upload-foto__botao:hover {
+  background: #D6EEDD;
+}
+
+/* Botões secundário e perigo */
+
+.botao--branco {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  color: var(--texto);
+}
+
+.botao--branco:hover {
+  background: var(--cinza-fundo);
+}
+
+/* ---------- Toast de confirmação ---------- */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--verde-escuro);
+  color: var(--branco);
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1100;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.toast.is-visivel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+@media (max-width: 880px) {
+  .campo--linha {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

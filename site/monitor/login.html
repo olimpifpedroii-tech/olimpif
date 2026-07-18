@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitor — Portal OlimpIF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:var(--cinza-fundo); padding:20px; }
+    .login-card { width:100%; max-width:380px; background:var(--branco); border:1px solid var(--cinza-borda); border-radius:var(--raio); box-shadow:var(--sombra); padding:36px 32px; }
+    .login-card__marca { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+    .login-card__icone { width:44px; height:44px; background:var(--verde); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--fonte-display); font-weight:800; font-size:1.2rem; }
+    .login-card__texto strong { display:block; font-family:var(--fonte-display); font-weight:800; }
+    .login-card__texto span { font-size:0.75rem; color:var(--texto-suave); text-transform:uppercase; letter-spacing:0.08em; }
+    .login-card h1 { font-family:var(--fonte-display); font-weight:800; font-size:1.6rem; margin-bottom:6px; }
+    .login-card p { font-size:0.9rem; color:var(--texto-suave); margin-bottom:24px; }
+    .campo { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+    .campo label { font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--texto-suave); }
+    .campo input { font-family:var(--fonte-corpo); font-size:0.95rem; padding:11px 14px; border:1px solid var(--cinza-borda); border-radius:8px; background:var(--cinza-fundo); color:var(--texto); }
+    .campo input:focus { outline:2px solid var(--verde); outline-offset:1px; }
+    .botao { width:100%; justify-content:center; margin-top:8px; }
+    .erro { display:none; background:#FDECEC; color:var(--vermelho); font-size:0.85rem; font-weight:600; padding:10px 14px; border-radius:8px; margin-bottom:16px; }
+    .erro.visivel { display:block; }
+    .voltar { display:block; text-align:center; margin-top:20px; font-size:0.85rem; color:var(--texto-suave); text-decoration:none; }
+    .voltar:hover { color:var(--verde-escuro); }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-card__marca">
+      <div class="login-card__icone">IF</div>
+      <div class="login-card__texto">
+        <strong>Portal OlimpIF</strong>
+        <span>Área do monitor</span>
+      </div>
+    </div>
+    <h1>Entrar</h1>
+    <p>Acesso exclusivo para monitores do OlimpIF.</p>
+    <div class="erro" id="erro-login">E-mail ou senha incorretos.</div>
+    <form id="form-login">
+      <div class="campo"><label for="email">E-mail</label><input type="email" id="email" placeholder="seu.email@ifpi.edu.br" required/></div>
+      <div class="campo"><label for="senha">Senha</label><input type="password" id="senha" placeholder="••••••••" required/></div>
+      <button type="submit" class="botao">Entrar</button>
+    </form>
+    <a class="voltar" href="../index.html">← Voltar para o site</a>
+  </div>
+  <script src="../js/api-config.js"></script>
+  <script>
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const erro = document.getElementById("erro-login");
+      const botao = e.target.querySelector("button");
+      botao.disabled = true; botao.textContent = "Entrando...";
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/monitores/login`, {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: document.getElementById("email").value, senha: document.getElementById("senha").value }),
+        });
+        if (res.ok) {
+          const dados = await res.json();
+          localStorage.setItem("token_monitor", dados.access_token);
+          window.location.href = "index.html";
+        } else { erro.classList.add("visivel"); }
+      } catch { erro.textContent = "Não foi possível conectar à API."; erro.classList.add("visivel"); }
+      finally { botao.disabled = false; botao.textContent = "Entrar"; }
+    });
+  </script>
+</body>
+</html>

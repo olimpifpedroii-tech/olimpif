@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notícias — Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="noticias.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <header class="page-header page-header--admin">
+        <div><span class="page-header__eyebrow">Cadastros</span><h1>Notícias</h1><p>Publique notícias e novidades sobre as olimpíadas.</p></div>
+        <button class="botao" id="botao-nova-noticia"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nova notícia</button>
+      </header>
+      <table class="tabela tabela--admin">
+        <thead><tr><th>Título</th><th>Data</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="tabela-noticias"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-noticia" hidden>
+    <div class="modal" style="max-width:620px;">
+      <div class="modal__cabecalho"><h2 id="titulo-modal-noticia">Nova notícia</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <form id="form-noticia">
+        <div class="modal__corpo">
+          <div class="campo"><label for="campo-titulo-noticia">Título</label><input type="text" id="campo-titulo-noticia" required/></div>
+          <div class="campo"><label for="campo-slug-noticia">Slug</label><input type="text" id="campo-slug-noticia" required placeholder="ex: medalha-ouro-obmep-2025"/><span class="campo__ajuda">Gerado automaticamente ao digitar o título.</span></div>
+          <div class="campo--linha">
+            <div class="campo"><label for="campo-data-noticia">Data de publicação</label><input type="text" id="campo-data-noticia" placeholder="Ex: 5 de julho de 2025"/></div>
+            <div class="campo"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;text-transform:none;letter-spacing:0;font-size:0.85rem;font-weight:600;color:var(--texto);"><input type="checkbox" id="campo-publicada-noticia" style="width:16px;height:16px;accent-color:var(--verde);"/>Publicar agora</label></div>
+          </div>
+          <div class="campo"><label for="campo-resumo-noticia">Resumo</label><textarea id="campo-resumo-noticia" placeholder="Breve descrição..." style="min-height:70px;"></textarea></div>
+          <div class="campo"><label for="campo-conteudo-noticia">Conteúdo completo</label><textarea id="campo-conteudo-noticia" required placeholder="Texto completo da notícia..." style="min-height:160px;"></textarea></div>
+          <div class="campo"><label>Foto de capa</label><div class="upload-foto"><img id="preview-noticia" src="" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:8px;background:var(--cinza-borda);display:none;"/><label class="upload-foto__botao" for="input-foto-noticia">Escolher foto</label><input type="file" id="input-foto-noticia" accept="image/*" hidden/></div></div>
+        </div>
+        <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="submit" class="botao" id="btn-salvar-noticia">Salvar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-excluir-noticia" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho"><h2>Excluir notícia</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="modal__corpo"><p id="texto-excluir-noticia">Tem certeza?</p></div>
+      <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="button" class="botao" style="background:var(--vermelho);" id="confirmar-excluir-noticia">Excluir</button></div>
+    </div>
+  </div>
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/admin-noticias.js"></script>
+</body>
+</html>

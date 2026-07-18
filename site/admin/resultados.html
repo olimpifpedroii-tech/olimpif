@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados — Painel Admin IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="resultados.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header page-header--admin">
+        <div>
+          <span class="page-header__eyebrow">Cadastros</span>
+          <h1>Resultados</h1>
+          <p>Registre medalhistas vinculando aluno, edição, modalidade e posição (1º, 2º ou 3º lugar).</p>
+        </div>
+        <button class="botao" id="botao-novo-resultado">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Novo resultado
+        </button>
+      </header>
+
+      <form class="filtros" id="filtros-resultados">
+        <div class="filtro">
+          <label for="filtro-edicao-resultado">Edição</label>
+          <select id="filtro-edicao-resultado"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-modalidade-resultado">Modalidade</label>
+          <select id="filtro-modalidade-resultado"></select>
+        </div>
+      </form>
+
+      <table class="tabela tabela--admin">
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Aluno</th>
+            <th>Modalidade</th>
+            <th>Edição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-resultados"></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Modal: criar / editar resultado -->
+  <div class="modal-fundo" id="modal-resultado" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2 id="titulo-modal-resultado">Novo resultado</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="form-resultado">
+        <div class="modal__corpo">
+          <div class="campo">
+            <label for="campo-aluno-resultado">Aluno</label>
+            <select id="campo-aluno-resultado" required></select>
+          </div>
+
+          <div class="campo--linha">
+            <div class="campo">
+              <label for="campo-modalidade-resultado">Modalidade</label>
+              <select id="campo-modalidade-resultado" required></select>
+            </div>
+            <div class="campo">
+              <label for="campo-edicao-resultado">Edição</label>
+              <select id="campo-edicao-resultado" required></select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="campo-posicao-resultado">Posição</label>
+            <select id="campo-posicao-resultado" required>
+              <option value="1">1º lugar (Ouro)</option>
+              <option value="2">2º lugar (Prata)</option>
+              <option value="3">3º lugar (Bronze)</option>
+              <option value="mh">Menção Honrosa</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal__rodape">
+          <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao">Salvar resultado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: confirmar exclusão -->
+  <div class="modal-fundo" id="modal-excluir-resultado" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2>Excluir resultado</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal__corpo">
+        <p id="texto-excluir-resultado">Tem certeza que deseja excluir este resultado? Essa ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal__rodape">
+        <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+        <button type="button" class="botao" style="background: var(--vermelho);" id="confirmar-exclusao-resultado">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/resultados.js"></script>
+</body>
+</html>

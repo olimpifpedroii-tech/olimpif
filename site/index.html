@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Início</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="index.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <section class="hero">
+        <div class="hero__stripe"></div>
+        <div class="hero__texto">
+          <span class="hero__eyebrow">Portal OlimpIF — IFPI Campus Pedro II</span>
+          <h1>Lapidar sonhos<br>e celebrar conquistas.</h1>
+          <p style="color:#D9F0E0; font-size:1rem; line-height:1.6; max-width:480px; margin-bottom:24px;">Cada medalha tem uma história. Cada estudante deixa um legado.</p>
+          <div class="hero__busca">
+            <input type="text" id="busca-aluno-home" placeholder="Buscar aluno pelo nome..." autocomplete="off" />
+            <div class="hero__busca-resultado" id="busca-resultado" style="display:none;"></div>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+            <a class="botao" href="ranking.html">Ver ranking</a>
+            <a class="botao botao--secundario" href="edicoes.html">Ver edições</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contadores" id="contadores">
+        <div class="contador">
+          <span class="contador__valor" id="cnt-medalhas">—</span>
+          <span class="contador__label">medalhas</span>
+        </div>
+        <div class="contador">
+          <span class="contador__valor" id="cnt-alunos">—</span>
+          <span class="contador__label">alunos premiados</span>
+        </div>
+        <div class="contador">
+          <span class="contador__valor" id="cnt-olimpiadas">—</span>
+          <span class="contador__label">olimpíadas</span>
+        </div>
+        <div class="contador">
+          <span class="contador__valor" id="cnt-anos">—</span>
+          <span class="contador__label">anos de histórico</span>
+        </div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Edição mais recente</h2>
+          <a href="edicoes.html">Ver todas as edições →</a>
+        </div>
+        <div class="hero-edicao card" id="hero-edicao" style="padding: 24px 28px;">
+          <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color: var(--vermelho);" id="hero-eyebrow">Carregando...</span>
+          <h2 style="font-family: var(--fonte-display); font-size:1.6rem; font-weight:800; margin: 6px 0 8px;" id="hero-titulo"></h2>
+          <p style="color: var(--texto-suave); font-size:0.95rem;" id="hero-descricao"></p>
+        </div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Pódio geral</h2>
+          <a href="medalhistas.html">Ver todos os medalhistas →</a>
+        </div>
+        <div class="podio" id="podio-geral">
+          <!-- Preenchido via JS -->
+        </div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Destaques em evidência</h2>
+          <a href="destaques.html">Ver todos os destaques →</a>
+        </div>
+        <div class="grid-cards" id="destaques-home">
+          <!-- Preenchido via JS -->
+        </div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Navegue por</h2>
+        </div>
+        <div class="grid-cards">
+          <a class="card-item" href="modalidades.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <h3>Modalidades</h3>
+            <p>Veja o histórico de campeões em cada modalidade, por edição ou no geral.</p>
+            <span class="card-item__meta">Explorar →</span>
+          </a>
+          <a class="card-item" href="edicoes.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            </div>
+            <h3>Edições</h3>
+            <p>Reveja edições anteriores: campeão geral, destaques e top medalhistas de cada ano.</p>
+            <span class="card-item__meta">Explorar →</span>
+          </a>
+          <a class="card-item" href="medalhistas.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="15" r="5"/><path d="M9 11 6 3h2l4 6 4-6h2l-3 8"/></svg>
+            </div>
+            <h3>Medalhistas</h3>
+            <p>Filtre por edição, turma, curso e modalidade para encontrar quem subiu ao pódio.</p>
+            <span class="card-item__meta">Explorar →</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitor — Portal OlimpIF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .monitor-layout{display:flex;min-height:100vh}
+    .monitor-aside{width:220px;flex-shrink:0;background:var(--branco);border-right:1px solid var(--cinza-borda);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh}
+    .monitor-aside__brand{padding:20px;border-bottom:1px solid var(--cinza-borda);display:flex;align-items:center;gap:10px}
+    .monitor-aside__brand-icon{width:36px;height:36px;background:var(--verde);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fonte-display);font-weight:800;font-size:1rem}
+    .monitor-aside__brand-text strong{font-family:var(--fonte-display);font-weight:800;font-size:0.95rem;display:block}
+    .monitor-aside__brand-text span{font-size:0.7rem;color:var(--texto-suave);text-transform:uppercase;letter-spacing:0.06em}
+    .monitor-aside__nav{flex:1;padding:12px;display:flex;flex-direction:column;gap:4px}
+    .monitor-nav-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--texto);font-size:0.88rem;font-weight:500;transition:background 0.15s;cursor:pointer;border:none;background:none;width:100%;text-align:left}
+    .monitor-nav-link:hover,.monitor-nav-link.ativo{background:var(--verde-claro);color:var(--verde-escuro)}
+    .monitor-nav-link svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .monitor-aside__footer{padding:12px;border-top:1px solid var(--cinza-borda)}
+    .monitor-main{margin-left:220px;flex:1;padding:40px 48px}
+    .monitor-secao{display:none}
+    .monitor-secao.ativo{display:block}
+    .monitor-tabela{width:100%;border-collapse:collapse;background:var(--branco);border:1px solid var(--cinza-borda);border-radius:var(--raio);overflow:hidden}
+    .monitor-tabela thead{background:var(--verde-claro)}
+    .monitor-tabela th{text-align:left;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--verde-escuro);padding:11px 14px;font-weight:700}
+    .monitor-tabela td{padding:12px 14px;border-top:1px solid var(--cinza-borda);font-size:0.88rem}
+    .monitor-tabela tbody tr:hover{background:var(--cinza-fundo)}
+    .monitor-tabela__foto{width:32px;height:32px;border-radius:50%;object-fit:cover;background:var(--cinza-borda);vertical-align:middle;margin-right:8px}
+    .busca-monitor{font-family:var(--fonte-corpo);font-size:0.9rem;padding:9px 12px;border:1px solid var(--cinza-borda);border-radius:8px;background:var(--cinza-fundo);color:var(--texto);width:300px;margin-bottom:16px}
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="monitor-layout">
+    <aside class="monitor-aside">
+      <div class="monitor-aside__brand">
+        <div class="monitor-aside__brand-icon">IF</div>
+        <div class="monitor-aside__brand-text"><strong>OlimpIF</strong><span>Monitor</span></div>
+      </div>
+      <nav class="monitor-aside__nav">
+        <button class="monitor-nav-link ativo" data-secao="alunos">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>Alunos
+        </button>
+        <button class="monitor-nav-link" data-secao="resultados">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="15" r="5"/><path d="M9 11 6 3h2l4 6 4-6h2l-3 8"/></svg>Resultados
+        </button>
+        <button class="monitor-nav-link" data-secao="ranking">
+          <svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/></svg>Ranking
+        </button>
+        <button class="monitor-nav-link" data-secao="edicoes">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Edições
+        </button>
+      </nav>
+      <div class="monitor-aside__footer">
+        <button class="monitor-nav-link" id="btn-sair" style="color:var(--vermelho);">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Sair
+        </button>
+      </div>
+    </aside>
+    <main class="monitor-main">
+      <div class="monitor-secao ativo" id="secao-alunos">
+        <header class="page-header" style="margin-bottom:20px;"><span class="page-header__eyebrow">Visualização</span><h1>Alunos</h1></header>
+        <input type="text" class="busca-monitor" id="busca-mon-aluno" placeholder="Buscar por nome..."/>
+        <table class="monitor-tabela"><thead><tr><th>Aluno</th><th>Turma</th><th>Curso</th><th>Ano</th></tr></thead><tbody id="tabela-mon-alunos"></tbody></table>
+      </div>
+      <div class="monitor-secao" id="secao-resultados">
+        <header class="page-header" style="margin-bottom:20px;"><span class="page-header__eyebrow">Visualização</span><h1>Resultados</h1></header>
+        <table class="monitor-tabela"><thead><tr><th>Posição</th><th>Aluno</th><th>Modalidade</th><th>Edição</th></tr></thead><tbody id="tabela-mon-resultados"></tbody></table>
+      </div>
+      <div class="monitor-secao" id="secao-ranking">
+        <header class="page-header" style="margin-bottom:20px;"><span class="page-header__eyebrow">Visualização</span><h1>Ranking</h1></header>
+        <table class="monitor-tabela"><thead><tr><th>#</th><th>Aluno</th><th>Total</th><th>Ouro</th><th>Prata</th><th>Bronze</th><th>MH</th></tr></thead><tbody id="tabela-mon-ranking"></tbody></table>
+      </div>
+      <div class="monitor-secao" id="secao-edicoes">
+        <header class="page-header" style="margin-bottom:20px;"><span class="page-header__eyebrow">Visualização</span><h1>Edições</h1></header>
+        <table class="monitor-tabela"><thead><tr><th>Nome</th><th>Ano</th><th>Data</th></tr></thead><tbody id="tabela-mon-edicoes"></tbody></table>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api-config.js"></script>
+  <script src="../js/monitor.js"></script>
+</body>
+</html>

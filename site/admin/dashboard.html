@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin — Olimpíadas IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="dashboard.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Painel administrativo</span>
+        <h1>Visão geral</h1>
+        <p>Resumo dos dados cadastrados no sistema das Olimpíadas IFPI.</p>
+      </header>
+
+      <div class="dashboard-grid" id="dashboard-cards"></div>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Atalhos</h2>
+        </div>
+        <div class="grid-cards">
+          <a class="card-item" href="alunos.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>
+            </div>
+            <h3>Cadastrar aluno</h3>
+            <p>Adicione um novo aluno com foto, turma e curso.</p>
+            <span class="card-item__meta">Ir para alunos →</span>
+          </a>
+          <a class="card-item" href="resultados.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="15" r="5"/><path d="M9 11 6 3h2l4 6 4-6h2l-3 8"/></svg>
+            </div>
+            <h3>Lançar resultado</h3>
+            <p>Registre medalhistas de uma modalidade em uma edição.</p>
+            <span class="card-item__meta">Ir para resultados →</span>
+          </a>
+          <a class="card-item" href="edicoes.html">
+            <div class="card-item__icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            </div>
+            <h3>Nova edição</h3>
+            <p>Crie uma nova olimpíada (ano/edição) para começar a lançar dados.</p>
+            <span class="card-item__meta">Ir para edições →</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

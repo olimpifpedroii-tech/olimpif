@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Destaques</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="destaques.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Reconhecimento</span>
+        <h1>Destaques</h1>
+        <p>Alunos que se destacaram em sua turma, curso, ano ou na olimpíada como um todo.</p>
+      </header>
+
+      <form class="filtros" id="filtros-destaques">
+        <div class="filtro">
+          <label for="filtro-edicao-destaque">Edição</label>
+          <select id="filtro-edicao-destaque"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-categoria-destaque">Categoria</label>
+          <select id="filtro-categoria-destaque"></select>
+        </div>
+      </form>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Resultados</h2>
+          <span id="contagem-destaques" style="font-size:0.85rem; color: var(--texto-suave); font-weight: 600;"></span>
+        </div>
+        <div class="grid-cards" id="lista-destaques"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/destaques.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hall da Fama — Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="hall-da-fama.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <header class="page-header page-header--admin">
+        <div><span class="page-header__eyebrow">Cadastros</span><h1>Hall da Fama</h1><p>Marque os alunos que fizeram história no campus.</p></div>
+        <button class="botao" id="botao-novo-hall"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Adicionar</button>
+      </header>
+      <table class="tabela tabela--admin">
+        <thead><tr><th>Aluno</th><th>Categoria</th><th>Ano</th><th>Descrição</th><th>Ações</th></tr></thead>
+        <tbody id="tabela-hall"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-hall" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho"><h2 id="titulo-modal-hall">Adicionar ao Hall da Fama</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <form id="form-hall">
+        <div class="modal__corpo">
+          <div class="campo"><label for="campo-aluno-hall">Aluno</label><select id="campo-aluno-hall" required></select></div>
+          <div class="campo"><label for="campo-cat-hall">Categoria</label><select id="campo-cat-hall" required><option value="mais_medalhas">Mais Medalhas</option><option value="destaque_ano">Destaque do Ano</option><option value="recordista">Recordista do Campus</option><option value="internacional">Conquistas Internacionais</option></select></div>
+          <div class="campo"><label for="campo-ano-hall">Ano</label><input type="number" id="campo-ano-hall" placeholder="Ex: 2025"/></div>
+          <div class="campo"><label for="campo-desc-hall">Descrição</label><textarea id="campo-desc-hall" placeholder="Descreva o motivo do reconhecimento..."></textarea></div>
+        </div>
+        <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="submit" class="botao">Salvar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-excluir-hall" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho"><h2>Remover do Hall da Fama</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="modal__corpo"><p id="texto-excluir-hall">Tem certeza?</p></div>
+      <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="button" class="botao" style="background:var(--vermelho);" id="confirmar-excluir-hall">Remover</button></div>
+    </div>
+  </div>
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/admin-hall.js"></script>
+</body>
+</html>

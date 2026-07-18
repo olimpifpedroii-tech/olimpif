@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alunos — Painel Admin IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="alunos.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header page-header--admin">
+        <div>
+          <span class="page-header__eyebrow">Cadastros</span>
+          <h1>Alunos</h1>
+          <p>Cadastre alunos com nome, foto, turma, curso e ano/série.</p>
+        </div>
+        <button class="botao" id="botao-novo-aluno">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Novo aluno
+        </button>
+      </header>
+
+      <form class="filtros" id="filtros-alunos">
+        <div class="filtro">
+          <label for="filtro-curso-aluno">Curso</label>
+          <select id="filtro-curso-aluno"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-turma-aluno">Turma</label>
+          <select id="filtro-turma-aluno"></select>
+        </div>
+        <div class="filtro" style="flex: 2; min-width: 220px;">
+          <label for="busca-aluno">Buscar por nome</label>
+          <input type="text" id="busca-aluno" placeholder="Digite o nome do aluno..." style="font-family: var(--fonte-corpo); font-size: 0.92rem; padding: 9px 12px; border: 1px solid var(--cinza-borda); border-radius: 8px; background: var(--cinza-fundo); color: var(--texto);" />
+        </div>
+      </form>
+
+      <table class="tabela tabela--admin">
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Turma</th>
+            <th>Curso</th>
+            <th>Ano/Série</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-alunos"></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Modal: criar / editar aluno -->
+  <div class="modal-fundo" id="modal-aluno" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2 id="titulo-modal-aluno">Novo aluno</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="form-aluno">
+        <div class="modal__corpo">
+          <div class="campo">
+            <label>Foto do aluno</label>
+            <div class="upload-foto">
+              <img class="upload-foto__preview" id="preview-foto-aluno" src="https://i.pravatar.cc/100?img=68" alt="Pré-visualização da foto" />
+              <label class="upload-foto__botao" for="input-foto-aluno">Escolher foto</label>
+              <input type="file" id="input-foto-aluno" accept="image/*" hidden />
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="campo-nome-aluno">Nome completo</label>
+            <input type="text" id="campo-nome-aluno" placeholder="Ex: João Pedro Lima" required />
+          </div>
+
+          <div class="campo--linha">
+            <div class="campo">
+              <label for="campo-curso-aluno">Curso</label>
+              <select id="campo-curso-aluno" required></select>
+            </div>
+            <div class="campo">
+              <label for="campo-ano-aluno">Ano/Série</label>
+              <select id="campo-ano-aluno" required>
+                <option value="1">1º ano</option>
+                <option value="2">2º ano</option>
+                <option value="3">3º ano</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="campo-turma-aluno">Turma</label>
+            <select id="campo-turma-aluno" required></select>
+          </div>
+
+          <div class="campo--linha">
+            <div class="campo">
+              <label for="campo-ingresso-aluno">Ano de ingresso</label>
+              <input type="number" id="campo-ingresso-aluno" placeholder="Ex: 2024" min="2000" max="2100" />
+            </div>
+            <div class="campo">
+              <label for="campo-cor-aluno">Cor do perfil</label>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <input type="color" id="campo-cor-aluno" value="#1B7A3E" style="width:44px; height:38px; border-radius:8px; border:1px solid var(--cinza-borda); cursor:pointer; padding:2px;" />
+                <input type="text" id="campo-cor-hex-aluno" placeholder="#1B7A3E" maxlength="7" style="flex:1; font-family: var(--fonte-corpo); font-size: 0.95rem; padding: 10px 13px; border: 1px solid var(--cinza-borda); border-radius: 8px; background: var(--cinza-fundo); color: var(--texto);" />
+              </div>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="campo-frase-aluno">Frase de destaque</label>
+            <input type="text" id="campo-frase-aluno" placeholder='Ex: "A persistência é o caminho do êxito."' maxlength="300" />
+            <span class="campo__ajuda">Frase ou citação que representa o aluno. Aparece em destaque no perfil.</span>
+          </div>
+
+          <div class="campo">
+            <label for="campo-bio-aluno">Biografia / curiosidades</label>
+            <textarea id="campo-bio-aluno" placeholder="Conte a história deste aluno, suas conquistas, o que o motiva..." style="min-height:100px;"></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="campo-layout-aluno">Layout do perfil</label>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px;">
+              <label style="cursor:pointer; border:2px solid var(--cinza-borda); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:6px; transition:border-color 0.15s;" id="label-classico">
+                <input type="radio" name="layout_perfil" id="layout-classico" value="classico" style="accent-color:var(--verde);" checked />
+                <span style="font-weight:700; font-size:0.88rem;">Clássico</span>
+                <span style="font-size:0.75rem; color:var(--texto-suave);">Foto circular, layout limpo e organizado</span>
+              </label>
+              <label style="cursor:pointer; border:2px solid var(--cinza-borda); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:6px; transition:border-color 0.15s;" id="label-editorial">
+                <input type="radio" name="layout_perfil" id="layout-editorial" value="editorial" style="accent-color:var(--verde);" />
+                <span style="font-weight:700; font-size:0.88rem;">Editorial</span>
+                <span style="font-size:0.75rem; color:var(--texto-suave);">Foto grande, tipografia bold, estilo magazine</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-size:0.85rem; font-weight:600; color:var(--texto); text-transform:none; letter-spacing:0;">
+              <input type="checkbox" id="campo-destaque-aluno" style="width:18px; height:18px; cursor:pointer; accent-color: var(--vermelho);" />
+              Marcar como destaque especial
+            </label>
+            <span class="campo__ajuda">Alunos com destaque especial recebem efeitos visuais diferenciados no perfil.</span>
+          </div>
+        </div>
+        <div class="modal__rodape">
+          <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao">Salvar aluno</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: confirmar exclusão -->
+  <div class="modal-fundo" id="modal-excluir-aluno" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2>Excluir aluno</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal__corpo">
+        <p id="texto-excluir-aluno">Tem certeza que deseja excluir este aluno? Essa ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal__rodape">
+        <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+        <button type="button" class="botao" style="background: var(--vermelho);" id="confirmar-exclusao-aluno">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/alunos.js"></script>
+</body>
+</html>

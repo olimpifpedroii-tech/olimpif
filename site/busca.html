@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Buscar Aluno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .busca-page__input-wrap {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .busca-page__input {
+      width: 100%;
+      padding: 16px 20px 16px 52px;
+      font-family: var(--fonte-corpo);
+      font-size: 1.05rem;
+      border: 2px solid var(--cinza-borda);
+      border-radius: var(--raio);
+      background: var(--branco);
+      color: var(--texto);
+      transition: border-color 0.2s ease;
+      box-shadow: var(--sombra);
+    }
+
+    .busca-page__input:focus {
+      outline: none;
+      border-color: var(--verde);
+    }
+
+    .busca-page__icone {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      stroke: var(--texto-suave);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .busca-page__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .aluno-card {
+      background: var(--branco);
+      border: 1px solid var(--cinza-borda);
+      border-radius: var(--raio);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--texto);
+      box-shadow: var(--sombra);
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .aluno-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--verde);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    }
+
+    .aluno-card img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--cinza-borda);
+      flex-shrink: 0;
+    }
+
+    .aluno-card__info strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .aluno-card__info span {
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+    }
+
+    .aluno-card__medalhas {
+      margin-left: auto;
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--verde-escuro);
+      flex-shrink: 0;
+    }
+
+    .busca-page__status {
+      text-align: center;
+      color: var(--texto-suave);
+      padding: 40px 0;
+      font-size: 0.95rem;
+    }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="busca.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Pesquisa</span>
+        <h1>Buscar aluno</h1>
+        <p>Digite o nome do aluno para encontrar seu perfil e histórico de conquistas.</p>
+      </header>
+
+      <div class="busca-page__input-wrap">
+        <svg class="busca-page__icone" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input
+          type="text"
+          class="busca-page__input"
+          id="busca-input"
+          placeholder="Ex: João Pedro, Ana Beatriz..."
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+
+      <div id="busca-status" class="busca-page__status">
+        Digite pelo menos 2 caracteres para buscar.
+      </div>
+
+      <div class="busca-page__grid" id="busca-grid" style="display:none;"></div>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/busca.js"></script>
+</body>
+</html>

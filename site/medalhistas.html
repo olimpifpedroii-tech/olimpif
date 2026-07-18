@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Medalhistas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="medalhistas.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Resultados</span>
+        <h1>Medalhistas</h1>
+        <p>Filtre por edição, turma, curso e modalidade para ver quem subiu ao pódio.</p>
+      </header>
+
+      <form class="filtros" id="filtros-medalhistas">
+        <div class="filtro">
+          <label for="filtro-edicao">Edição</label>
+          <select id="filtro-edicao"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-turma">Turma</label>
+          <select id="filtro-turma"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-curso">Curso</label>
+          <select id="filtro-curso"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-tipo">Tipo de medalha</label>
+          <select id="filtro-tipo"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-modalidade">Modalidade</label>
+          <select id="filtro-modalidade"></select>
+        </div>
+      </form>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Pódio do filtro selecionado</h2>
+        </div>
+        <div class="podio" id="podio-filtrado"></div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Lista completa</h2>
+          <span id="contagem-resultados" style="font-size:0.85rem; color: var(--texto-suave); font-weight: 600;"></span>
+        </div>
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Aluno</th>
+              <th>Turma</th>
+              <th>Curso</th>
+              <th>Modalidade</th>
+              <th>Edição</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-medalhistas"></tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/medalhistas.js"></script>
+</body>
+</html>

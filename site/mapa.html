@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olimpíadas IFPI — Mapa de Conquistas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .mapa-container { display:grid; grid-template-columns:1fr 340px; gap:32px; align-items:start; }
+    .mapa-visual-box { background:var(--branco); border:1px solid var(--cinza-borda); border-radius:var(--raio); padding:32px; box-shadow:var(--sombra); min-height:300px; }
+    .mapa-lista { display:flex; flex-direction:column; gap:12px; }
+    .mapa-estado-card { background:var(--branco); border:1px solid var(--cinza-borda); border-radius:var(--raio); padding:16px 18px; box-shadow:var(--sombra); }
+    .mapa-estado-card__titulo { font-family:var(--fonte-display); font-weight:800; font-size:1rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+    .mapa-estado-card__titulo span { display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--verde); flex-shrink:0; }
+    .mapa-estado-card__modalidades { display:flex; flex-wrap:wrap; gap:6px; }
+    .mapa-tag { background:var(--verde-claro); color:var(--verde-escuro); font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:100px; }
+    .mapa-nacional { background:linear-gradient(135deg,var(--verde-claro),#fff); border-color:var(--verde); }
+    .mapa-nacional .mapa-estado-card__titulo span { background:var(--vermelho); }
+    @media(max-width:880px) { .mapa-container { grid-template-columns:1fr; } }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="mapa.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <header class="page-header">
+        <span class="page-header__eyebrow">Alcance</span>
+        <h1>Mapa de Conquistas</h1>
+        <p>Onde as olimpíadas do IFPI Campus Pedro II estão presentes.</p>
+      </header>
+      <div class="mapa-container">
+        <div class="mapa-visual-box"><div id="mapa-visual"></div></div>
+        <div class="mapa-lista" id="mapa-lista"></div>
+      </div>
+    </div>
+  </div>
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mapa.js"></script>
+</body>
+</html>

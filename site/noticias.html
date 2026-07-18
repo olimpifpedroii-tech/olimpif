@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olimpíadas IFPI — Notícias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .noticias-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+    .noticia-card{background:var(--branco);border:1px solid var(--cinza-borda);border-radius:var(--raio);overflow:hidden;box-shadow:var(--sombra);text-decoration:none;color:var(--texto);display:flex;flex-direction:column;transition:transform 0.2s ease,box-shadow 0.2s ease}
+    .noticia-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.1)}
+    .noticia-card__img{width:100%;height:200px;object-fit:cover;background:var(--cinza-fundo)}
+    .noticia-card__placeholder{width:100%;height:200px;background:var(--verde-claro);display:flex;align-items:center;justify-content:center}
+    .noticia-card__placeholder svg{width:40px;height:40px;stroke:var(--verde-escuro);fill:none;stroke-width:1.5}
+    .noticia-card__corpo{padding:20px;flex:1;display:flex;flex-direction:column;gap:8px}
+    .noticia-card__data{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--vermelho)}
+    .noticia-card__titulo{font-family:var(--fonte-display);font-weight:800;font-size:1.15rem;line-height:1.2}
+    .noticia-card__resumo{font-size:0.88rem;color:var(--texto-suave);line-height:1.5;flex:1}
+    .noticia-card__ler{font-size:0.8rem;font-weight:700;color:var(--verde-escuro);margin-top:8px}
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="noticias.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <header class="page-header">
+        <span class="page-header__eyebrow">Novidades</span>
+        <h1>Notícias</h1>
+        <p>Fique por dentro dos resultados e novidades das olimpíadas do IFPI Campus Pedro II.</p>
+      </header>
+      <div class="noticias-grid" id="noticias-grid"></div>
+    </div>
+  </div>
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/noticias.js"></script>
+</body>
+</html>
