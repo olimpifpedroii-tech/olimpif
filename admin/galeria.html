@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeria — Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <style>
+    .galeria-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+    .galeria-admin-item{border-radius:var(--raio);overflow:hidden;border:1px solid var(--cinza-borda);box-shadow:var(--sombra)}
+    .galeria-admin-item img{width:100%;height:160px;object-fit:cover;display:block}
+    .galeria-admin-item__info{padding:12px;background:var(--branco)}
+    .galeria-admin-item__titulo{font-weight:700;font-size:0.88rem;margin-bottom:2px}
+    .galeria-admin-item__cat{font-size:0.72rem;color:var(--texto-suave);margin-bottom:8px}
+    .galeria-admin-item__acoes{display:flex;justify-content:flex-end}
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="galeria.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <header class="page-header page-header--admin">
+        <div><span class="page-header__eyebrow">Cadastros</span><h1>Galeria</h1><p>Adicione fotos de cerimônias, premiações, viagens e competições.</p></div>
+        <button class="botao" id="botao-nova-foto"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Adicionar foto</button>
+      </header>
+      <form class="filtros" id="filtros-galeria-admin">
+        <div class="filtro"><label for="filtro-cat-admin">Categoria</label><select id="filtro-cat-admin"><option value="todos">Todas</option><option value="cerimonia">Cerimônia</option><option value="premiacao">Premiação</option><option value="viagem">Viagem</option><option value="competicao">Competição</option></select></div>
+      </form>
+      <div class="galeria-admin-grid" id="galeria-admin-grid"></div>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-foto" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho"><h2>Adicionar foto</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <form id="form-foto">
+        <div class="modal__corpo">
+          <div class="campo"><label>Foto</label><div class="upload-foto"><img id="preview-galeria" src="" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:8px;background:var(--cinza-borda);display:none;"/><label class="upload-foto__botao" for="input-foto-galeria">Escolher arquivo</label><input type="file" id="input-foto-galeria" accept="image/*" hidden required/></div></div>
+          <div class="campo"><label for="campo-titulo-foto">Título</label><input type="text" id="campo-titulo-foto" required/></div>
+          <div class="campo"><label for="campo-cat-foto">Categoria</label><select id="campo-cat-foto" required><option value="cerimonia">Cerimônia</option><option value="premiacao">Premiação</option><option value="viagem">Viagem</option><option value="competicao">Competição</option></select></div>
+          <div class="campo"><label for="campo-data-foto">Data</label><input type="text" id="campo-data-foto" placeholder="Ex: Outubro de 2025"/></div>
+          <div class="campo"><label for="campo-desc-foto">Descrição</label><textarea id="campo-desc-foto"></textarea></div>
+        </div>
+        <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="submit" class="botao" id="btn-salvar-foto">Enviar foto</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-fundo" id="modal-excluir-foto" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho"><h2>Excluir foto</h2><button class="modal__fechar" data-fechar-modal><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="modal__corpo"><p>Tem certeza que deseja excluir esta foto?</p></div>
+      <div class="modal__rodape"><button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button><button type="button" class="botao" style="background:var(--vermelho);" id="confirmar-excluir-foto">Excluir</button></div>
+    </div>
+  </div>
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/admin-galeria.js"></script>
+</body>
+</html>

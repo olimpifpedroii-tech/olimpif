@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destaques — Painel Admin IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="destaques.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header page-header--admin">
+        <div>
+          <span class="page-header__eyebrow">Cadastros</span>
+          <h1>Destaques</h1>
+          <p>Cadastre destaques vinculando aluno, edição, categoria (turma/curso/ano/geral) e descrição.</p>
+        </div>
+        <button class="botao" id="botao-novo-destaque">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Novo destaque
+        </button>
+      </header>
+
+      <form class="filtros" id="filtros-destaques-admin">
+        <div class="filtro">
+          <label for="filtro-edicao-destaque-admin">Edição</label>
+          <select id="filtro-edicao-destaque-admin"></select>
+        </div>
+        <div class="filtro">
+          <label for="filtro-categoria-destaque-admin">Categoria</label>
+          <select id="filtro-categoria-destaque-admin"></select>
+        </div>
+      </form>
+
+      <table class="tabela tabela--admin">
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Categoria</th>
+            <th>Edição</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-destaques-admin"></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Modal: criar / editar destaque -->
+  <div class="modal-fundo" id="modal-destaque" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2 id="titulo-modal-destaque">Novo destaque</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="form-destaque">
+        <div class="modal__corpo">
+          <div class="campo">
+            <label for="campo-aluno-destaque">Aluno</label>
+            <select id="campo-aluno-destaque" required></select>
+          </div>
+
+          <div class="campo--linha">
+            <div class="campo">
+              <label for="campo-categoria-destaque">Categoria</label>
+              <select id="campo-categoria-destaque" required>
+                <option value="geral">Destaque geral</option>
+                <option value="turma">Destaque de turma</option>
+                <option value="curso">Destaque de curso</option>
+                <option value="ano">Destaque de ano/série</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="campo-edicao-destaque">Edição</label>
+              <select id="campo-edicao-destaque" required></select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="campo-descricao-destaque">Descrição</label>
+            <textarea id="campo-descricao-destaque" placeholder="Conte o motivo do destaque..." required></textarea>
+          </div>
+        </div>
+        <div class="modal__rodape">
+          <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao">Salvar destaque</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: confirmar exclusão -->
+  <div class="modal-fundo" id="modal-excluir-destaque" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2>Excluir destaque</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal__corpo">
+        <p id="texto-excluir-destaque">Tem certeza que deseja excluir este destaque? Essa ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal__rodape">
+        <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+        <button type="button" class="botao" style="background: var(--vermelho);" id="confirmar-exclusao-destaque">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/destaques.js"></script>
+</body>
+</html>

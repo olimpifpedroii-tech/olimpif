@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Sobre o OlimpIF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .sobre-hero {
+      background: var(--verde-escuro);
+      border-radius: var(--raio);
+      padding: 52px 48px;
+      color: var(--branco);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sobre-hero::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .sobre-hero::after {
+      content: "";
+      position: absolute;
+      right: 40px;
+      bottom: -80px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .sobre-hero h1 {
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 3rem;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .sobre-hero p {
+      font-size: 1.05rem;
+      color: #D9F0E0;
+      max-width: 580px;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    .sobre-hero__slogan {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .sobre-card {
+      background: var(--branco);
+      border: 1px solid var(--cinza-borda);
+      border-radius: var(--raio);
+      padding: 28px;
+      box-shadow: var(--sombra);
+    }
+
+    .sobre-card h2 {
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: var(--verde-escuro);
+    }
+
+    .sobre-card p, .sobre-card li {
+      font-size: 0.92rem;
+      color: var(--texto-suave);
+      line-height: 1.7;
+    }
+
+    .sobre-card ul {
+      padding-left: 18px;
+    }
+
+    .sobre-card li {
+      margin-bottom: 6px;
+    }
+
+    .sobre-fase {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .sobre-fase__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sobre-fase__info strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .sobre-fase__info span {
+      font-size: 0.82rem;
+      color: var(--texto-suave);
+    }
+
+    @media (max-width: 760px) {
+      .sobre-grid { grid-template-columns: 1fr; }
+      .sobre-hero h1 { font-size: 2rem; }
+      .sobre-hero { padding: 36px 28px; }
+    }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="sobre.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <div class="sobre-hero">
+        <span class="page-header__eyebrow" style="color:#B7E6C4; margin-bottom:12px; display:block;">IFPI Campus Pedro II</span>
+        <h1>Uma joia de campus.<br>Um legado de conquistas.</h1>
+        <p>Em Pedro II, a natureza nos presenteou com uma das gemas mais raras do mundo: a opala. No IFPI Campus Pedro II, acreditamos que nossos estudantes também são joias raras. Cada olimpíada representa um desafio. Cada medalha revela talento, dedicação e perseverança.</p>
+        <p class="sobre-hero__slogan">Lapidar sonhos e celebrar conquistas · Portal OlimpIF</p>
+      </div>
+
+      <div class="sobre-grid">
+        <div class="sobre-card">
+          <h2>O que é o OlimpIF?</h2>
+          <p>O OlimpIF é o programa de olimpíadas acadêmicas do IFPI Campus Pedro II, que apoia, organiza e registra a participação dos alunos em competições científicas, matemáticas, linguísticas e culturais em âmbito local, regional e nacional.</p>
+          <br>
+          <p>Este portal é o memorial oficial das conquistas do campus — um espaço que preserva histórias para que nunca deixem de inspirar novas gerações.</p>
+        </div>
+
+        <div class="sobre-card">
+          <h2>Objetivos</h2>
+          <ul>
+            <li>Incentivar a participação dos estudantes em olimpíadas do conhecimento</li>
+            <li>Registrar e preservar o histórico de conquistas do campus</li>
+            <li>Valorizar o mérito acadêmico dos alunos e ex-alunos</li>
+            <li>Criar uma identidade olímpica para o IFPI Campus Pedro II</li>
+            <li>Servir de referência para outros campi do IFPI e instituições federais</li>
+          </ul>
+        </div>
+
+        <div class="sobre-card">
+          <h2>Desenvolvimento do Portal</h2>
+          <div class="sobre-fase">
+            <div class="sobre-fase__num">1</div>
+            <div class="sobre-fase__info">
+              <strong>Fase 1 — MVP (concluída)</strong>
+              <span>Página inicial, medalhistas, ranking, destaques, modalidades, edições, perfil do aluno e painel administrativo.</span>
+            </div>
+          </div>
+          <div class="sobre-fase">
+            <div class="sobre-fase__num">2</div>
+            <div class="sobre-fase__info">
+              <strong>Fase 2 — Consolidação (em andamento)</strong>
+              <span>Histórico, estatísticas, busca por aluno, perfil premium, linha do tempo.</span>
+            </div>
+          </div>
+          <div class="sobre-fase">
+            <div class="sobre-fase__num">3</div>
+            <div class="sobre-fase__info">
+              <strong>Fase 3 — Portal completo (planejada)</strong>
+              <span>Galeria de fotos, notícias, passaporte olímpico em PDF, QR Code, área de monitores.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sobre-card">
+          <h2>A cidade e a opala</h2>
+          <p>Pedro II é uma das poucas regiões do mundo com depósitos naturais de opala — uma pedra preciosa conhecida pelo seu brilho único e cores que mudam conforme a luz. Não existem duas opalas iguais.</p>
+          <br>
+          <p>Da mesma forma, não existem duas trajetórias iguais. Cada estudante do IFPI Campus Pedro II é uma joia única. Cada medalha revela um novo brilho.</p>
+          <br>
+          <p style="font-style:italic; color:var(--verde-escuro); font-weight:600;">"Porque cada medalha tem uma história. E cada estudante deixa um legado."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

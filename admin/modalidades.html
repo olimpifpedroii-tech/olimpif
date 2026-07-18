@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modalidades — Painel Admin IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="modalidades.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header page-header--admin">
+        <div>
+          <span class="page-header__eyebrow">Cadastros</span>
+          <h1>Modalidades</h1>
+          <p>Cadastre as modalidades disputadas nas olimpíadas.</p>
+        </div>
+        <button class="botao" id="botao-nova-modalidade">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Nova modalidade
+        </button>
+      </header>
+
+      <table class="tabela tabela--admin">
+        <thead>
+          <tr>
+            <th>Modalidade</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-modalidades"></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Modal: criar / editar modalidade -->
+  <div class="modal-fundo" id="modal-modalidade" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2 id="titulo-modal-modalidade">Nova modalidade</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="form-modalidade">
+        <div class="modal__corpo">
+          <div class="campo">
+            <label for="campo-nome-modalidade">Nome da modalidade</label>
+            <input type="text" id="campo-nome-modalidade" placeholder="Ex: Futsal" required />
+          </div>
+          <div class="campo">
+            <label for="campo-descricao-modalidade">Descrição</label>
+            <textarea id="campo-descricao-modalidade" placeholder="Breve descrição sobre o formato da disputa"></textarea>
+          </div>
+        </div>
+        <div class="modal__rodape">
+          <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao">Salvar modalidade</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: confirmar exclusão -->
+  <div class="modal-fundo" id="modal-excluir-modalidade" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2>Excluir modalidade</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal__corpo">
+        <p id="texto-excluir-modalidade">Tem certeza que deseja excluir esta modalidade? Essa ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal__rodape">
+        <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+        <button type="button" class="botao" style="background: var(--vermelho);" id="confirmar-exclusao-modalidade">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/modalidades.js"></script>
+</body>
+</html>

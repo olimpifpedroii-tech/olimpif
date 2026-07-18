@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edições — Painel Admin IFPI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="edicoes.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header page-header--admin">
+        <div>
+          <span class="page-header__eyebrow">Cadastros</span>
+          <h1>Edições</h1>
+          <p>Cadastre novas edições (anos) das olimpíadas para começar a lançar resultados e destaques.</p>
+        </div>
+        <button class="botao" id="botao-nova-edicao">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Nova edição
+        </button>
+      </header>
+
+      <table class="tabela tabela--admin">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Ano</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-edicoes-admin"></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Modal: criar / editar edição -->
+  <div class="modal-fundo" id="modal-edicao" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2 id="titulo-modal-edicao">Nova edição</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="form-edicao">
+        <div class="modal__corpo">
+          <div class="campo">
+            <label for="campo-nome-edicao">Nome da edição</label>
+            <input type="text" id="campo-nome-edicao" placeholder="Ex: Olimpíada IFPI 2026" required />
+          </div>
+
+          <div class="campo--linha">
+            <div class="campo">
+              <label for="campo-ano-edicao">Ano</label>
+              <input type="number" id="campo-ano-edicao" placeholder="2026" required />
+            </div>
+            <div class="campo">
+              <label for="campo-data-edicao">Data (texto livre)</label>
+              <input type="text" id="campo-data-edicao" placeholder="Ex: Outubro de 2026" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal__rodape">
+          <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao">Salvar edição</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: confirmar exclusão -->
+  <div class="modal-fundo" id="modal-excluir-edicao" hidden>
+    <div class="modal">
+      <div class="modal__cabecalho">
+        <h2>Excluir edição</h2>
+        <button class="modal__fechar" data-fechar-modal aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal__corpo">
+        <p id="texto-excluir-edicao">Tem certeza que deseja excluir esta edição? Resultados e destaques vinculados também serão afetados.</p>
+      </div>
+      <div class="modal__rodape">
+        <button type="button" class="botao botao--branco" data-fechar-modal>Cancelar</button>
+        <button type="button" class="botao" style="background: var(--vermelho);" id="confirmar-exclusao-edicao">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="js/admin-common.js"></script>
+  <script src="js/edicoes.js"></script>
+</body>
+</html>

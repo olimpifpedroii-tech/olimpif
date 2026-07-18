@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Modalidades</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="modalidades.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <!-- VISTA 1: lista de modalidades -->
+      <div id="vista-lista">
+        <header class="page-header">
+          <span class="page-header__eyebrow">Esportes e jogos</span>
+          <h1>Modalidades</h1>
+          <p>Escolha uma modalidade para ver o histórico de campeões, por edição ou geral.</p>
+        </header>
+
+        <div class="grid-cards" id="lista-modalidades"></div>
+      </div>
+
+      <!-- VISTA 2: histórico da modalidade selecionada -->
+      <div id="vista-historico" style="display:none;">
+        <header class="page-header">
+          <a href="#" id="link-voltar" style="font-size:0.85rem; font-weight:700; color: var(--verde-escuro); text-decoration:none; display:inline-block; margin-bottom:10px;">← Voltar para modalidades</a>
+          <span class="page-header__eyebrow">Histórico</span>
+          <h1 id="titulo-modalidade">Modalidade</h1>
+          <p id="descricao-modalidade" style="color:var(--texto-suave); margin-top:6px;"></p>
+        </header>
+
+        <div class="stats-publicas" id="stats-modalidade" style="margin-bottom:28px;"></div>
+
+        <form class="filtros" id="filtros-modalidade">
+          <div class="filtro">
+            <label for="filtro-edicao-modalidade">Edição</label>
+            <select id="filtro-edicao-modalidade"></select>
+          </div>
+        </form>
+
+        <section class="secao">
+          <div class="secao__titulo">
+            <h2>Pódio</h2>
+          </div>
+          <div class="podio" id="podio-modalidade"></div>
+        </section>
+
+        <section class="secao">
+          <div class="secao__titulo">
+            <h2>Histórico completo</h2>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Curso</th>
+                <th>Edição</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-modalidade"></tbody>
+          </table>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/modalidades.js"></script>
+</body>
+</html>

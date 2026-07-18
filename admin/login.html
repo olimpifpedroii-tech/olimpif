@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Login Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body.login-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100vh;
+      background: var(--cinza-fundo);
+      padding: 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 380px;
+      background: var(--branco);
+      border: 1px solid var(--cinza-borda);
+      border-radius: var(--raio);
+      box-shadow: var(--sombra);
+      padding: 36px 32px;
+    }
+
+    .login-card__marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .login-card__marca-icone {
+      width: 44px;
+      height: 44px;
+      background: var(--verde);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .login-card__marca-texto strong {
+      display: block;
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .login-card__marca-texto span {
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .login-card h1 {
+      font-family: var(--fonte-display);
+      font-weight: 800;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .login-card p {
+      font-size: 0.9rem;
+      color: var(--texto-suave);
+      margin-bottom: 24px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .campo label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--texto-suave);
+    }
+
+    .campo input {
+      font-family: var(--fonte-corpo);
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      background: var(--cinza-fundo);
+      color: var(--texto);
+    }
+
+    .campo input:focus {
+      outline: 2px solid var(--verde);
+      outline-offset: 1px;
+    }
+
+    .login-card .botao {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .login-card__erro {
+      display: none;
+      background: #FDECEC;
+      color: var(--vermelho);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .login-card__erro.is-visivel {
+      display: block;
+    }
+
+    .login-card__voltar {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--texto-suave);
+      text-decoration: none;
+    }
+
+    .login-card__voltar:hover {
+      color: var(--verde-escuro);
+    }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body class="login-body">
+
+  <div class="login-card">
+    <div class="login-card__marca">
+      <div class="login-card__marca-icone">IF</div>
+      <div class="login-card__marca-texto">
+        <strong>Olimpíadas IFPI</strong>
+        <span>Painel administrativo</span>
+      </div>
+    </div>
+
+    <h1>Entrar</h1>
+    <p>Acesse para cadastrar alunos, modalidades, resultados, destaques e edições.</p>
+
+    <div class="login-card__erro" id="erro-login">E-mail ou senha incorretos. Tente novamente.</div>
+
+    <form id="form-login">
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu.email@ifpi.edu.br" required />
+      </div>
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+      </div>
+      <button type="submit" class="botao">Entrar no painel</button>
+    </form>
+
+    <a class="login-card__voltar" href="../index.html">← Voltar para o site</a>
+  </div>
+
+  <script src="../js/api-config.js"></script>
+  <script>
+    /* =========================================================
+       Login — autenticação real via API
+       ========================================================= */
+
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const erro = document.getElementById("erro-login");
+      const botao = e.target.querySelector("button[type=submit]");
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      botao.disabled = true;
+      botao.textContent = "Entrando...";
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        if (res.ok) {
+          const dados = await res.json();
+          localStorage.setItem("token_admin", dados.access_token);
+          erro.classList.remove("is-visivel");
+          window.location.href = "dashboard.html";
+        } else {
+          erro.textContent = "E-mail ou senha incorretos. Tente novamente.";
+          erro.classList.add("is-visivel");
+        }
+      } catch (erroFetch) {
+        console.error("Erro ao tentar login:", erroFetch);
+        erro.textContent = "Não foi possível conectar à API. Verifique se o servidor está rodando.";
+        erro.classList.add("is-visivel");
+      } finally {
+        botao.disabled = false;
+        botao.textContent = "Entrar no painel";
+      }
+    });
+  </script>
+</body>
+</html>

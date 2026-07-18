@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Ranking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="ranking.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Resultados</span>
+        <h1>Ranking de medalhistas</h1>
+        <p>Veja o total de medalhas conquistadas por cada aluno. Clique em uma linha para ver o detalhamento (ouro, prata, bronze e menção honrosa).</p>
+      </header>
+
+      <form class="filtros" id="filtros-ranking">
+        <div class="filtro">
+          <label for="filtro-edicao-ranking">Edição</label>
+          <select id="filtro-edicao-ranking"></select>
+        </div>
+      </form>
+
+      <section class="secao">
+        <table class="ranking-tabela">
+          <thead>
+            <tr>
+              <th style="width: 40px;">#</th>
+              <th>Aluno</th>
+              <th>Medalhas</th>
+              <th style="width: 90px; text-align:center;">Total</th>
+              <th style="width: 50px;"></th>
+            </tr>
+          </thead>
+          <tbody id="tabela-ranking"></tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/ranking.js"></script>
+</body>
+</html>

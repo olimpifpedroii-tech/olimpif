@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Histórico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="historico.html">
+
+  <div id="aside-container"></div>
+
+  <div class="main">
+    <div id="topbar-container"></div>
+
+    <div class="content">
+
+      <header class="page-header">
+        <span class="page-header__eyebrow">Trajetória</span>
+        <h1>Histórico</h1>
+        <p>A evolução das conquistas do IFPI Campus Pedro II ao longo dos anos.</p>
+      </header>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Estatísticas gerais</h2>
+        </div>
+        <div class="stats-publicas" id="stats-gerais"></div>
+      </section>
+
+      <section class="secao">
+        <div class="secao__titulo">
+          <h2>Evolução por ano</h2>
+        </div>
+        <div class="historico-linha" id="historico-linha"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/historico.js"></script>
+</body>
+</html>

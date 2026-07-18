@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olimpíadas IFPI — Hall da Fama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .hall-hero { background: linear-gradient(135deg, var(--verde-escuro) 0%, #0a3d1f 100%); border-radius:var(--raio); padding:52px 48px; color:var(--branco); margin-bottom:40px; position:relative; overflow:hidden; text-align:center; }
+    .hall-hero::before { content:"✦"; position:absolute; font-size:20rem; color:rgba(255,215,0,0.03); top:-60px; left:50%; transform:translateX(-50%); pointer-events:none; }
+    .hall-hero h1 { font-family:var(--fonte-display); font-weight:900; font-size:3rem; color:#FFD700; margin-bottom:10px; }
+    .hall-hero p { color:rgba(255,255,255,0.6); font-size:1rem; }
+    .hall-categoria { margin-bottom:48px; }
+    .hall-categoria__titulo { font-family:var(--fonte-display); font-weight:800; font-size:1.1rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--texto-suave); margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+    .hall-categoria__titulo::after { content:""; flex:1; height:1px; background:var(--cinza-borda); }
+    .hall-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+    .hall-card { background:var(--branco); border:1px solid var(--cinza-borda); border-radius:var(--raio); padding:28px 24px; box-shadow:var(--sombra); text-decoration:none; color:var(--texto); display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; transition:transform 0.2s ease,box-shadow 0.2s ease; position:relative; overflow:hidden; }
+    .hall-card::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#FFD700,#FF8C00); }
+    .hall-card:hover { transform:translateY(-4px); box-shadow:0 8px 28px rgba(0,0,0,0.1); }
+    .hall-card__foto { width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #FFD700; box-shadow:0 0 0 6px rgba(255,215,0,0.1); }
+    .hall-card__estrela { position:absolute; top:16px; right:16px; color:#FFD700; font-size:1rem; }
+    .hall-card__nome { font-family:var(--fonte-display); font-weight:800; font-size:1.2rem; }
+    .hall-card__curso { font-size:0.78rem; color:var(--texto-suave); }
+    .hall-card__desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.5; }
+    .hall-card__ano { font-family:var(--fonte-display); font-weight:700; font-size:0.8rem; color:#D4A017; letter-spacing:0.06em; }
+  </style>
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:,">
+</head>
+<body data-pagina="hall-da-fama.html">
+  <div id="aside-container"></div>
+  <div class="main">
+    <div id="topbar-container"></div>
+    <div class="content">
+      <div class="hall-hero">
+        <span class="page-header__eyebrow" style="color:#FFD700;margin-bottom:10px;display:block;">Reconhecimento máximo</span>
+        <h1>✦ Hall da Fama</h1>
+        <p>Os estudantes que fizeram história no IFPI Campus Pedro II.</p>
+      </div>
+      <div id="hall-conteudo"></div>
+    </div>
+  </div>
+  <script src="js/api-config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/hall-da-fama.js"></script>
+</body>
+</html>
