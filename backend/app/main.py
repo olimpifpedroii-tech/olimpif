@@ -1,3 +1,6 @@
+from app.startup import inicializar
+inicializar()
+
 """
 Aplicação principal — Olimpíadas IFPI.
 
