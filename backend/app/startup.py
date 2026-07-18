@@ -1,6 +1,6 @@
 from app.database import engine, Base
 from app import models
-from app.seed import popular_banco
+from app.seed import rodar_seed
 from sqlalchemy import text
 
 def inicializar():
@@ -9,6 +9,6 @@ def inicializar():
         resultado = conn.execute(text("SELECT COUNT(*) FROM usuarios_admin"))
         total = resultado.scalar()
         if total == 0:
-            popular_banco()
+            rodar_seed()
 
 inicializar()
