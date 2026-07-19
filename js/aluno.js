@@ -116,11 +116,10 @@ async function carregarPerfil() {
           const c = TIPO_CLASSE[r.posicao];
           return `
             <div class="perfil-medalha perfil-medalha--${c}">
-              <div class="perfil-medalha__icone">${TIPO_LABEL[r.posicao]}</div>
-              <div class="perfil-medalha__info">
-                <strong>${r.modalidade.nome}</strong>
-                <span>${r.edicao.nome}</span>
-              </div>
+              <div class="perfil-medalha__simbolo">${TIPO_LABEL[r.posicao]}</div>
+              <span class="perfil-medalha__tipo">${TIPO_LABEL[r.posicao] === 'MH' ? 'Menção Honrosa' : TIPO_LABEL[r.posicao]}</span>
+              <div class="perfil-medalha__nome">${r.modalidade.nome}</div>
+              <div class="perfil-medalha__edicao">${r.edicao.nome}</div>
               <span class="perfil-medalha__ano">${r.edicao.ano}</span>
             </div>`;
         }).join("")
