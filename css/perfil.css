@@ -363,12 +363,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 900;
-  font-size: 1.4rem;
   color: #fff;
   margin-bottom: 4px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.perfil-medalha__simbolo svg {
+  width: 36px;
+  height: 36px;
+  stroke: #fff;
 }
 
 .perfil-medalha--ouro   .perfil-medalha__simbolo { background: linear-gradient(135deg, #D4A017, #F5C842); }

@@ -1,9 +1,14 @@
 /* Perfil do Aluno — layout único premium */
 
-const TIPO_CLASSE = { "1":"ouro","2":"prata","3":"bronze",mh:"mh" };
-const TIPO_LABEL  = { "1":"Ouro","2":"Prata","3":"Bronze",mh:"MH" };
+const MEDALHA_ICONE = {
+  "1": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>`,
+  "2": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5c0-1 3-2.5 3-4a1.5 1.5 0 0 0-3 0"/><path d="M9 17h6"/></svg>`,
+  "3": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5a1.5 1.5 0 0 1 3 0c0 .8-1 1.5-1 1.5s1 .7 1 1.5a1.5 1.5 0 0 1-3 0"/></svg>`,
+  "mh": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+};
 
-function fotoSrc(url) {
+const TIPO_CLASSE = { "1":"ouro","2":"prata","3":"bronze",mh:"mh" };
+const TIPO_LABEL  = { "1":"Ouro","2":"Prata","3":"Bronze",mh:"Menção Honrosa" };
   if (!url) return 'https://i.pravatar.cc/400?img=1';
   return url.startsWith('http') ? url : API_BASE_URL + url;
 }
@@ -116,8 +121,8 @@ async function carregarPerfil() {
           const c = TIPO_CLASSE[r.posicao];
           return `
             <div class="perfil-medalha perfil-medalha--${c}">
-              <div class="perfil-medalha__simbolo">${TIPO_LABEL[r.posicao]}</div>
-              <span class="perfil-medalha__tipo">${TIPO_LABEL[r.posicao] === 'MH' ? 'Menção Honrosa' : TIPO_LABEL[r.posicao]}</span>
+              <div class="perfil-medalha__simbolo">${MEDALHA_ICONE[r.posicao]}</div>
+              <span class="perfil-medalha__tipo">${TIPO_LABEL[r.posicao]}</span>
               <div class="perfil-medalha__nome">${r.modalidade.nome}</div>
               <div class="perfil-medalha__edicao">${r.edicao.nome}</div>
               <span class="perfil-medalha__ano">${r.edicao.ano}</span>
