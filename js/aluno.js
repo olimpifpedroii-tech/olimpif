@@ -1,21 +1,18 @@
 /* Perfil do Aluno — layout único premium */
 
 const MEDALHA_ICONE = {
-  "1": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>`,
-  "2": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5c0-1 3-2.5 3-4a1.5 1.5 0 0 0-3 0"/><path d="M9 17h6"/></svg>`,
-  "3": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5a1.5 1.5 0 0 1 3 0c0 .8-1 1.5-1 1.5s1 .7 1 1.5a1.5 1.5 0 0 1-3 0"/></svg>`,
-  "mh": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+  "1": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>`,
+  "2": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5c0-1 3-2.5 3-4a1.5 1.5 0 0 0-3 0"/><path d="M9 17h6"/></svg>`,
+  "3": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9 11 6 3h2l4 5 4-5h2l-3 8"/><path d="M9.5 13.5a1.5 1.5 0 0 1 3 0c0 .8-1 1.5-1 1.5s1 .7 1 1.5a1.5 1.5 0 0 1-3 0"/></svg>`,
+  "mh": `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
 };
 
 const TIPO_CLASSE = { "1":"ouro","2":"prata","3":"bronze",mh:"mh" };
 const TIPO_LABEL  = { "1":"Ouro","2":"Prata","3":"Bronze",mh:"Menção Honrosa" };
+
+function fotoSrc(url) {
   if (!url) return 'https://i.pravatar.cc/400?img=1';
   return url.startsWith('http') ? url : API_BASE_URL + url;
-}
-
-function escurecer(hex, f=0.4) {
-  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-  return `rgb(${Math.floor(r*f)},${Math.floor(g*f)},${Math.floor(b*f)})`;
 }
 
 function animarNumero(el, valor, dur=900) {
@@ -91,10 +88,9 @@ async function carregarPerfil() {
     const p1    = anos.length ? Math.min(...anos) : null;
     const p2    = anos.length ? Math.max(...anos) : null;
 
-    // Divide o nome em primeiro e restante para destacar
-    const partes    = aluno.nome.trim().split(" ");
-    const primeiro  = partes[0];
-    const restante  = partes.slice(1).join(" ");
+    const partes   = aluno.nome.trim().split(" ");
+    const primeiro = partes[0];
+    const restante = partes.slice(1).join(" ");
 
     const metaHtml = [
       `<span class="perfil-hero__meta-item">${svg(IC.curso)}${aluno.turma.curso.nome}</span>`,
@@ -174,7 +170,7 @@ async function carregarPerfil() {
     if (eDestaque) iniciarParticulas(corTema);
 
   } catch(err) {
-    loading.textContent = "Não foi possível carregar o perfil. Verifique se a API está rodando.";
+    loading.textContent = "Não foi possível carregar o perfil.";
   }
 }
 
